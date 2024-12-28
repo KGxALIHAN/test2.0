@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Список рецептов</h1>
+<a href="{% url 'recipe_create' %}" class="btn btn-primary">Добавить рецепт</a>
+<ul>
+    {% for recipe in recipes %}
+    <li>
+        {{ recipe.title }}
+        <a href="{% url 'recipe_detail' recipe.id %}">Просмотреть</a>
+        <a href="{% url 'recipe_delete' recipe.id %}">Удалить</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

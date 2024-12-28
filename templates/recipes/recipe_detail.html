@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ recipe.title }}</h1>
+<p>{{ recipe.description }}</p>
+<h2>Ингредиенты</h2>
+<ul>
+    {% for ingredient in recipe.ingredients.all %}
+    <li>{{ ingredient.name }}: {{ ingredient.quantity }} {{ ingredient.unit }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'ingredient_create' %}?recipe={{ recipe.id }}" class="btn btn-primary">Добавить ингредиент</a>
+{% endblock %}
